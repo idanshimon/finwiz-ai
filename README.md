@@ -16,7 +16,6 @@ To set up the project locally on your machine, follow these steps:
 ### Prerequisites
 
 - Install [Python 3.12](https://www.python.org/downloads/)
-- Install [Node.js 20](https://nodejs.org/en/download/)
 - Install [git](https://git-scm.com/downloads)
 
 ### Steps
