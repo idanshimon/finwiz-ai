@@ -6,9 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+
 jobs:
   build-and-scan:
-    name: Build, Scan, and Push Docker Image
+    name: Build, Scan, and Save Report
     runs-on: ubuntu-latest
 
     steps:
@@ -37,10 +38,17 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} # Snyk API token from GitHub Secrets
         run: snyk auth $SNYK_TOKEN
 
-      # Step 6: Scan Docker Image with Snyk
+      # Step 6: Scan Docker Image with Snyk and Save Report
       - name: Snyk Docker Image Scan
-        run: snyk container test idanohh/finwiz
+        run: snyk container test idanohh/finwiz --json > snyk-scan-results.json
 
-      # Step 7: Push the Docker image to Docker Hub
+      # Step 7: Upload Snyk Scan Report as Artifact
+      - name: Upload Snyk Scan Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: snyk-scan-report
+          path: snyk-scan-results.json
+
+      # Step 8: Push the Docker image to Docker Hub
       - name: Push Docker Image
         run: docker push idanohh/finwiz
