@@ -1,0 +1,12 @@
+# .dockerignore
+k8s/
+.git/
+__pycache__/
+*.pyc
+.env
+.dockerignore
+Dockerfile
+README.md
+*.log
+.pytest_cache/
+.coverage

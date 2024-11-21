@@ -1,68 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>FinWiz AI - Financial Assistant</title>
-        <link rel="stylesheet" href="/static/style.css" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <div class="container">
-            <div class="logo-container">
-                <img
-                    class="logo"
-                    src="../static/images/logo.png"
-                    alt="StockSight Logo"
-                />
+
+<head>
+    <meta charset="UTF-8">
+    <title>FinWiz AI - Financial Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img class="logo" src="../static/images/logo.png" alt="FinWiz Logo" />
+        </div>
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('chat')">Chat</button>
+            <button class="tab-button" onclick="switchTab('history')">History</button>
+        </div>
+
+        <div id="chat-tab" class="tab-content">
+            <div class="save-history-toggle">
+                <label>
+                    <input type="checkbox" id="save-history" checked>
+                    Save History
+                </label>
             </div>
             <div id="chat-container">
-                <div
-                    id="progress-bar"
-                    style="display: none; width: 100%; background-color: #ddd"
-                >
-                    <div
-                        id="progress"
-                        style="
-                            height: 2px;
-                            width: 0%;
-                            background-color: #4c4eaf;
-                        "
-                    ></div>
+                <div id="progress-bar" style="display: none; width: 100%; background-color: #ddd;">
+                    <div id="progress" style="height: 2px; width: 0%; background-color: #4c4eaf;"></div>
                 </div>
                 <div id="chat-box" class="chat-box"></div>
                 <div id="input-container" class="input-area">
-                    <textarea
-                        id="user-input"
-                        class="user-input"
-                        rows="1"
-                        placeholder="Type your message here..."
-                    ></textarea>
-                    <button
-                        id="send-button"
-                        class="send-button"
-                        onclick="sendMessage()"
-                    >
-                        <svg
-                            class="send-icon"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                            focusable="false"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                            color="inherit"
-                        >
-                            <rect width="24" height="24" fill="none"></rect>
+                    <textarea id="user-input" class="user-input" rows="1"
+                        placeholder="Type your message here..."></textarea>
+                    <button id="send-button" class="send-button" onclick="sendMessage()">
+                        <svg class="send-icon" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M3 5.51v3.71c0 .46.31.86.76.97L11 12l-7.24 1.81c-.45.11-.76.51-.76.97v3.71c0 .72.73 1.2 1.39.92l15.42-6.49c.82-.34.82-1.5 0-1.84L4.39 4.58C3.73 4.31 3 4.79 3 5.51z"
-                            ></path>
+                                d="M3 5.51v3.71c0 .46.31.86.76.97L11 12l-7.24 1.81c-.45.11-.76.51-.76.97v3.71c0 .72.73 1.2 1.39.92l15.42-6.49c.82-.34.82-1.5 0-1.84L4.39 4.58C3.73 4.31 3 4.79 3 5.51z" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <script src="/static/script.js"></script>
-    </body>
+
+        <div id="history-tab" class="tab-content" style="display: none">
+            <div class="history-controls">
+                <button id="clear-history-btn" class="clear-button" onclick="clearHistory()">Clear History</button>
+            </div>
+            <div id="history-container">
+                <!-- History will be populated here -->
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
 </html>

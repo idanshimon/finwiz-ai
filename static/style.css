@@ -1,5 +1,5 @@
 body {
-    background: #141414; /* Maintain dark background */
+    background: #141414;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -12,6 +12,33 @@ body {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.tabs {
+    display: flex;
+    background-color: #1e1e1e;
+    padding: 10px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.tab-button.active {
+    background-color: #4E85EA;
+    border-radius: 4px;
+}
+
+.save-history-toggle {
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .logo-container {
@@ -63,7 +90,7 @@ body {
     padding: 10px;
     background-color: #1e1e1e;
     align-items: center;
-    gap: 10px; /* Add gap for spacing */
+    gap: 10px;
 }
 
 .user-input {
@@ -74,42 +101,58 @@ body {
     border: 1px solid #444;
     background-color: #333;
     color: white;
-    resize: vertical; /* Allow manual vertical resizing */
+    resize: vertical;
     outline: none;
-    overflow: hidden; /* Hide scroll bar */
-    min-height: 40px; /* Initial height */
-    max-height: 120px; /* Maximum height */
+    overflow: hidden;
+    min-height: 40px;
+    max-height: 120px;
 }
 
 .send-button {
-    flex-shrink: 0; /* Prevent shrinking */
-    background-color: #4e85ea; /* Updated Color */
+    flex-shrink: 0;
+    background-color: #4e85ea;
     border: none;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
     color: #ffffff;
-    width: 40px; /* Ensure consistent width */
-    height: 40px; /* Ensure consistent height */
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.send-icon {
-    height: 20px;
-    width: 20px;
+#history-container {
+    padding: 20px;
+    color: #fff;
+    height: 70vh;
+    overflow-y: auto;
 }
 
-#chat-box::-webkit-scrollbar {
-    width: 8px;
+.history-item {
+    background-color: #2a2a2a;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
-#chat-box::-webkit-scrollbar-thumb {
-    background: #555;
+.history-controls {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.clear-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
     border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-#chat-box::-webkit-scrollbar-thumb:hover {
-    background: #777;
+.clear-button:hover {
+    background-color: #c82333;
 }

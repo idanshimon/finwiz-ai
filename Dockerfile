@@ -1,17 +1,16 @@
-#FROM python:slim
-FROM cgr.dev/chainguard/python:latest-dev
+FROM python:3.12-slim
 
-USER root
 WORKDIR /app
-COPY requirements.txt /app
-# Install Python packages specified in requirements.txt
-# and additional package psutil
-RUN apk update && \
-    apk add --no-cache libexpat1=2.6.2-r0 && \
-    pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt && \
-    pip install -U psutil && \
-    pip install -U aiohttp==3.9.0rc0
-# Make sure the entire project directory is copied
-COPY . /app
-CMD ["app.py"]
+
+# Copy only requirements first for better layer caching
+COPY requirements.txt .
+
+# Combine RUN commands and remove unnecessary packages
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install -U psutil aiohttp==3.9.0rc0
+
+# Copy application code
+COPY . .
+
+# Use python to run the app explicitly
+CMD ["python", "app.py"]
