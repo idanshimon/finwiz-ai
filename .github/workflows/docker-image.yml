@@ -40,8 +40,9 @@ jobs:
 
       # Step 6: Scan Docker Image with Snyk and Save Report
       - name: Snyk Docker Image Scan
-        run: snyk container test idanohh/finwiz > snyk-scan-results.txt
-             cat snyk-scan-results.txt
+        run: |
+              snyk container test idanohh/finwiz > snyk-scan-results.txt
+              cat snyk-scan-results.txt
 
       # Step 7: Upload Snyk Scan Report as Artifact
       - name: Upload Snyk Scan Report
