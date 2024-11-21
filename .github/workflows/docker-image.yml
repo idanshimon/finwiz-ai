@@ -44,6 +44,7 @@ jobs:
 
       # Step 7: Upload Snyk Scan Report as Artifact
       - name: Upload Snyk Scan Report
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: snyk-scan-report
