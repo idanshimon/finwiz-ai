@@ -42,7 +42,7 @@ jobs:
       - name: Snyk Docker Image Scan
         continue-on-error: true # Not recommended for production use the security policies 
         run: |
-              snyk container test idanohh/finwiz:latest
+              snyk container test idanohh/finwiz:latest --json-file-output=snyk-scan-results.json
 
       # Step 7: Upload Snyk Scan Report as Artifact
       - name: Upload Snyk Scan Report
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: snyk-scan-report
-          path: snyk-scan-results.txt
+          path: snyk-scan-results.json
 
       # Step 8: Push the Docker image to Docker Hub
       - name: Push Docker Image
